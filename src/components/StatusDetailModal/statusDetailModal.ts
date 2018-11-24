@@ -15,12 +15,12 @@ export default class StatusDetailModal extends Vue {
   private isLoadingTimelines: boolean = false
 
   get percentAllLabel(): string {
-    const percent = this.percentAll > 100 ? '100' : this.percentAll.toFixed(0)
+    const percent = this.percentAll > 100 ? '100' : this.percentAll
     return `合算在室率：${percent}%`
   }
 
   get percentLessonLabel(): string {
-    const percent = this.percentLesson > 100 ? '100' : this.percentLesson.toFixed(0)
+    const percent = this.percentLesson > 100 ? '100' : this.percentLesson
     return `授業時間（90x5分）の在室率：${percent}%`
   }
 
@@ -51,8 +51,8 @@ export default class StatusDetailModal extends Vue {
     const endDate: string = Moment().format('YYYY/MM/DD')
     this.getPresenseTime(memberId, getStatusId, startDate, endDate).then((value) => {
       const presenseMinute: number = value.data
-      this.percentAll = (presenseMinute / ( 7 * 24 * 60) * 100)
-      this.percentLesson = (presenseMinute / (5 * 7.5 * 60) * 100)
+      this.percentAll = Math.round(presenseMinute / ( 7 * 24 * 60) * 100)
+      this.percentLesson = Math.round(presenseMinute / (5 * 7.5 * 60) * 100)
       this.isLoadingPercent = false
     }).catch((reason) => {
       // TODO エラー処理

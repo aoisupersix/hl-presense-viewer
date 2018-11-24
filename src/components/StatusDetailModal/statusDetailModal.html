@@ -33,8 +33,8 @@
           <h4>
             <sui-icon name="flag checkered" />直近一週間の在室率：
           </h4>
-          <sui-progress progress color="teal" state="active" :percent="percent_lesson" :label="percent_lesson_label" />
-          <sui-progress progress color="green" state="active" :percent="percent_all" :label="percent_all_label" />
+          <sui-progress progress color="teal" state="active" :percent="percentLesson" :label="percentLessonLabel" />
+          <sui-progress progress color="green" state="active" :percent="percentAll" :label="percentAllLabel" />
         </sui-segment>
         <sui-segment>
           <sui-dimmer :active="isLoadingTimelines">
