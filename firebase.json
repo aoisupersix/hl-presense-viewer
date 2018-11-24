@@ -1,0 +1,24 @@
+{
+  "hosting": {
+    "public": "dist",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "/holdTime",
+        "function": "holdTime"
+      },
+      {
+        "source": "/getTimelineData",
+        "function": "getTimelineData"
+      },
+      {
+        "source": "/",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}
