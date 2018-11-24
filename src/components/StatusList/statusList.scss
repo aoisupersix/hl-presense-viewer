@@ -1,0 +1,30 @@
+div#status-list {
+  margin-top: 3%;
+  animation: fadeIn 0.5s ease 0s 1 normal;
+  -webkit-animation: fadeIn 1s ease 1 normal;
+}
+.ui.ui.selectable.table {
+  margin: 2% auto;
+}
+.ui.selectable.table tbody tr:hover {
+  cursor: pointer;
+}
+.ui.selectable.table tbody tr.primary {
+  color: #2c2c2c;
+  background-color: #c5e5ff;
+}
+.ui.selectable.table tbody tr.primary:hover,
+.ui.table tbody tr.primary td.selectable:hover {
+  background-color: #b5d5ff !important;
+}
+.ui.selectable.table tbody tr.warning {
+  background-color: #ffce73 !important; /*テーブルの色は薄めに調整*/
+}
+.ui.selectable.table tbody tr.warning:hover,
+.ui.table tbody tr.warning td.selectable:hover {
+  background-color: #ffbe63 !important;
+}
+.ui.selectable.table tbody tr.secondary:hover,
+.ui.table tbody tr.secondary td.selectable:hover {
+  background-color: #ebebeb !important;
+}

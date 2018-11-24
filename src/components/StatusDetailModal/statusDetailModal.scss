@@ -1,0 +1,39 @@
+.status-title {
+  font-size: 5rem;
+  text-align: center;
+}
+.primary-title {
+  color: #ffffff;
+  background-color: #65ace4;
+}
+.warning-title {
+  color: #ffffff;
+  background-color: #de9610;
+}
+.secondary-title {
+  color: #040404;
+  background-color: #fbfbfb;
+}
+.primary-title,
+.warning-title,
+.secondary-title {
+  padding: -2px -10px;
+}
+.ui.grid > .row > .column {
+  margin-top: 4% !important;
+}
+@media screen and (min-width: 0px) and (max-device-width: 400px) {
+  .status-title {
+    font-size: 3rem;
+  }
+  .ui.statistic > .value,
+  .ui.statistics .statistic > .value {
+    font-size: 1.5rem !important;
+  }
+}
+@media screen and (min-width: 401px) and (max-device-width: 800px) {
+  .ui.statistic > .value,
+  .ui.statistics .statistic > .value {
+    font-size: 2rem !important;
+  }
+}

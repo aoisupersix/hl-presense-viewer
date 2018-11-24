@@ -1,0 +1,58 @@
+<div id="status-detail-modal">
+  <sui-modal v-model="isOpen" closeIcon>
+    <sui-modal-header>
+      <sui-icon size="large" name="info circle" /> ステータス詳細
+    </sui-modal-header>
+    <sui-modal-content scrolling v-if="member != undefined">
+      <sui-modal-description>
+        <sui-label class="ui gray large">
+          <sui-icon name="history" />最終更新: {{ member.last_update_date }}
+          <sui-label-detail>{{ states[member.last_status].name}} → {{ states[member.status].name }}</sui-label-detail>
+        </sui-label><br>
+        <sui-grid :columns="2" divided>
+          <sui-grid-row>
+            <sui-grid-column>
+              <sui-statistic>
+                <sui-statistic-value>
+                  {{ member.last_name + " " + member.first_name }}
+                </sui-statistic-value>
+                <sui-statistic-label>
+                  {{ member.last_name_eng }} - {{ member.first_name_eng }}
+                </sui-statistic-label>
+              </sui-statistic>
+            </sui-grid-column>
+            <sui-grid-column>
+              <h1 class="status-title" :class="states[member.status].color + '-title'">{{ states[member.status].name }}</h1>
+            </sui-grid-column>
+          </sui-grid-row>
+        </sui-grid>
+        <sui-segment>
+          <sui-dimmer :active="isLoadingPercent">
+            <sui-loader>Loading...</sui-loader>
+          </sui-dimmer>
+          <h4>
+            <sui-icon name="flag checkered" />直近一週間の在室率：
+          </h4>
+          <sui-progress progress color="teal" state="active" :percent="percent_lesson" :label="percent_lesson_label" />
+          <sui-progress progress color="green" state="active" :percent="percent_all" :label="percent_all_label" />
+        </sui-segment>
+        <sui-segment>
+          <sui-dimmer :active="isLoadingTimelines">
+            <sui-loader>Loading...</sui-loader>
+          </sui-dimmer>
+          <h4>
+            <sui-icon name="signal" />タイムライン：</h4>
+          <div v-for="(timeline, idx) in timeLines" :key="idx">
+            <p>{{ timeline.date }}</p>
+            <GChart :settings="{ packages: ['timeline'] }" type="Timeline" :data="timeline.data" :options="timeline.options" />
+          </div>
+        </sui-segment>
+      </sui-modal-description>
+    </sui-modal-content>
+    <sui-modal-actions>
+      <sui-button positive @click.native="closeModal">
+        OK
+      </sui-button>
+    </sui-modal-actions>
+  </sui-modal>
+</div>

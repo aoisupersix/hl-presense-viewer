@@ -1,0 +1,23 @@
+<div id="status-list">
+  <div class="ui dividing header"><sui-icon name="user" />在室状況一覧</div>
+  <p>
+    <a href="http://www.hykwlab.org/">拓殖大学工学部情報工学科早川研究室</a>の現在の在室状況です。<br> 更新はリアルタイムに行われます。また、クリックで詳細情報が表示されます。
+  </p>
+  <StatusDetailModal ref="statusDetail" />
+  <sui-table selectable celled v-show="states != null">
+    <sui-table-header>
+      <sui-table-row>
+        <sui-table-header-cell>Name</sui-table-header-cell>
+        <sui-table-header-cell>Status</sui-table-header-cell>
+        <sui-table-header-cell>LastUpdateDate</sui-table-header-cell>
+      </sui-table-row>
+    </sui-table-header>
+    <sui-table-body v-for="(member, idx) in members" :key="idx">
+      <sui-table-row @click="toggle(idx)" :class="states[member.status].color">
+        <sui-table-cell>{{ member.last_name + " " + member.first_name }}</sui-table-cell>
+        <sui-table-cell>{{ states[member.status].name }}</sui-table-cell>
+        <sui-table-cell>{{ member.last_update_date }}</sui-table-cell>
+      </sui-table-row>
+    </sui-table-body>
+  </sui-table>
+</div>
