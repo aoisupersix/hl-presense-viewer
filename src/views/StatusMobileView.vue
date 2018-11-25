@@ -4,20 +4,23 @@
       <sui-loader>Loading...</sui-loader>
     </sui-dimmer>
     <StatusCard :name="name" :color="color" :statusText="statusText" :lastUpdateText="lastUpdateText" />
-    <OccupancyRate class="occupancy" :memberId="memberId" />
+    <OccupancyRate class="margin-top" :memberId="memberId" />
+    <Timelines class="margin-top" :memberId="memberId" />
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue, Watch } from 'vue-property-decorator'
 import { firebaseDatabase } from '@/main'
-import StatusCard from '@/components/StatusCard/StatusCard'
 import OccupancyRate from '@/components/OccupancyRate/OccupancyRate'
+import StatusCard from '@/components/StatusCard/StatusCard'
+import Timelines from '@/components/Timelines/Timelines'
 
 @Component({
   components: {
+    OccupancyRate,
     StatusCard,
-    OccupancyRate
+    Timelines
   },
 })
 export default class StatusMobileView extends Vue {
@@ -58,12 +61,12 @@ export default class StatusMobileView extends Vue {
 
 <style lang="scss" scoped>
   #status-mobile-view {
-    margin-top: 30px;
+    margin-top: 10px;
     width: 95% !important;
     margin-left: auto !important;
     margin-right: auto !important;
   }
-  .occupancy {
+  .margin-top {
     margin-top: 30px !important;
   }
 </style>

@@ -1,0 +1,11 @@
+<sui-segment>
+  <sui-dimmer :active="isLoading">
+    <sui-loader>Loading...</sui-loader>
+  </sui-dimmer>
+  <h4>
+    <sui-icon name="signal" />タイムライン：</h4>
+  <div v-for="(timeline, idx) in timelines" :key="idx">
+    <p>{{ timeline.date }}</p>
+    <GChart :settings="{ packages: ['timeline'] }" type="Timeline" :data="timeline.data" :options="timeline.options" />
+  </div>
+</sui-segment>

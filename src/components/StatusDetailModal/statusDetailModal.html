@@ -26,18 +26,8 @@
             </sui-grid-column>
           </sui-grid-row>
         </sui-grid>
-        <OccupancyRate :memberId="id" />
-        <sui-segment>
-          <sui-dimmer :active="isLoadingTimelines">
-            <sui-loader>Loading...</sui-loader>
-          </sui-dimmer>
-          <h4>
-            <sui-icon name="signal" />タイムライン：</h4>
-          <div v-for="(timeline, idx) in timeLines" :key="idx">
-            <p>{{ timeline.date }}</p>
-            <GChart :settings="{ packages: ['timeline'] }" type="Timeline" :data="timeline.data" :options="timeline.options" />
-          </div>
-        </sui-segment>
+        <OccupancyRate :memberId="memberId" />
+        <Timelines :memberId="memberId" />
       </sui-modal-description>
     </sui-modal-content>
     <sui-modal-actions>
