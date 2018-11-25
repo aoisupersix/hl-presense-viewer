@@ -1,4 +1,4 @@
-import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
+import { Component, Vue, Prop, Watch, } from 'vue-property-decorator';
 import axios, { AxiosPromise } from 'axios'
 import Moment from 'moment'
 
@@ -72,3 +72,5 @@ export default class OccupancyRate extends Vue {
     return ret
   }
 }
+
+Vue.component('occupancy-rate', OccupancyRate)

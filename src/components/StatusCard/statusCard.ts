@@ -1,4 +1,4 @@
-import { Component, Vue, Prop } from 'vue-property-decorator';
+import { Component, Vue, Prop, } from 'vue-property-decorator';
 
 @Component
 export default class StatusCard extends Vue {
@@ -14,3 +14,5 @@ export default class StatusCard extends Vue {
   @Prop({ type: String })
   public lastUpdateText!: string
 }
+
+Vue.component('status-card', StatusCard)

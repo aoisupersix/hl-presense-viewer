@@ -4,8 +4,8 @@
       <sui-loader>Loading...</sui-loader>
     </sui-dimmer>
     <StatusCard :name="name" :color="color" :statusText="statusText" :lastUpdateText="lastUpdateText" />
-    <OccupancyRate class="margin-top" :memberId="memberId" />
-    <Timelines class="margin-top" :memberId="memberId" />
+    <occupancy-rate class="margin-top" :memberId="memberId" />
+    <time-lines class="margin-top" :memberId="memberId" />
   </div>
 </template>
 

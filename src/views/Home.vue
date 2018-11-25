@@ -6,7 +6,7 @@
         Hayakawa Laboratory's presence in the laboratory !
       </div>
     </h1>
-    <StatusList />
+    <status-list />
   </div>
 </template>
 

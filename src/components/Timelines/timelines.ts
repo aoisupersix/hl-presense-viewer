@@ -53,3 +53,5 @@ export default class Timelines extends Vue {
     return ret
   }
 }
+
+Vue.component('time-lines', Timelines)

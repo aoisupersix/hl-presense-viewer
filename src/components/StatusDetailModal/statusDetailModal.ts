@@ -25,3 +25,5 @@ export default class StatusDetailModal extends Vue {
     this.isOpen = false
   }
 }
+
+Vue.component('status-detail-modal', StatusDetailModal)

@@ -34,3 +34,5 @@ export default class StatusList extends Vue {
     statusDetailModal.openModal(id, this.members, this.states)
   }
 }
+
+Vue.component('status-list', StatusList)
