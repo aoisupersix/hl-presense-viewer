@@ -12,9 +12,9 @@
 <script lang="ts">
 import { Component, Vue, Watch } from 'vue-property-decorator'
 import { firebaseDatabase } from '@/main'
-import OccupancyRate from '@/components/OccupancyRate/OccupancyRate'
-import StatusCard from '@/components/StatusCard/StatusCard'
-import Timelines from '@/components/Timelines/Timelines'
+import OccupancyRate from '@/components/OccupancyRate/OccupancyRate.vue'
+import StatusCard from '@/components/StatusCard/StatusCard.vue'
+import Timelines from '@/components/Timelines/Timelines.vue'
 
 @Component({
   components: {

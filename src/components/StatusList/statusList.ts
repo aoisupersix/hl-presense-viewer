@@ -1,6 +1,6 @@
 import { Component, Vue } from 'vue-property-decorator';
 import { firebaseDatabase } from '@/main';
-import StatusDetailModal from '@/components/StatusDetailModal/StatusDetailModal'
+import StatusDetailModal from '@/components/StatusDetailModal/StatusDetailModal.vue'
 
 @Component({
   components: {

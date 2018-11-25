@@ -1,5 +1,5 @@
 {
   "projects": {
-    "default": "hlmanager-32609"
+    "default": $FIREBASE_PROJECT
   }
 }

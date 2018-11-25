@@ -1,6 +1,6 @@
 import { Component, Vue } from 'vue-property-decorator'
-import Timelines from '@/components/Timelines/Timelines'
-import OccupancyRate from '@/components/OccupancyRate/OccupancyRate'
+import Timelines from '@/components/Timelines/Timelines.vue'
+import OccupancyRate from '@/components/OccupancyRate/OccupancyRate.vue'
 
 @Component({
   components: {
