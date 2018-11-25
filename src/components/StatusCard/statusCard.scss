@@ -1,0 +1,51 @@
+.ui.card>.content>.header:not(.ui), .ui.cards>.card>.content>.header:not(.ui) {
+  font-size: 2.3rem !important;
+  font-weight: 100 !important;
+}
+
+// Primary
+.ui.card.primary, .ui.cards > .card.primary {
+  background-color: #65ace4;
+}
+
+.ui.card.primary > div.content > div.header,
+.ui.card.primary > div.content > div.meta,
+.ui.card.primary > div.content > div.description,
+.ui.card.primary > div.extra {
+  color: #ffffff;
+}
+
+// Warning
+.ui.card.warning, .ui.cards > .card.warning {
+  background-color: #de9610;
+}
+
+.ui.card.warning > div.content > div.header,
+.ui.card.warning > div.content > div.meta,
+.ui.card.warning > div.content > div.description,
+.ui.card.warning > div.extra {
+  color: #ffffff;
+}
+
+// Secondary
+.ui.card.secondary, .ui.cards > .card.secondary {
+  background-color: #fbfbfb;
+}
+
+.ui.card.secondary > div.content > div.header,
+.ui.card.secondary > div.content > div.meta,
+.ui.card.secondary > div.content > div.description,
+.ui.card.secondary > div.extra {
+  color: #040404;
+}
+
+.ui.centered.card {
+  width: 90%;
+}
+
+h1.status {
+  margin-top: 30px !important;
+  margin-bottom: 20px !important;
+  font-size: 3rem !important;
+  text-align: center !important;
+}

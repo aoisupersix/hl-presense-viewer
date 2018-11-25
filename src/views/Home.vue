@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="home">
     <h1 class="ui header title">
       早川研究室 在室状況
       <div class="sub header">

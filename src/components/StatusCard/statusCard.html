@@ -1,0 +1,14 @@
+<div id="status-card">
+  <sui-card class="centered" :class="color">
+    <sui-card-content>
+      <sui-card-header class="title">{{ name }}</sui-card-header>
+      <sui-card-meta>の現在のステータス：</sui-card-meta>
+      <sui-card-description>
+        <h1 class="status">{{ statusText }}</h1>
+      </sui-card-description>
+    </sui-card-content>
+    <sui-card-content extra>
+      <sui-icon name="calendar alternate outline" />
+      {{ lastUpdateText }}</sui-card-content>
+  </sui-card>
+</div>
