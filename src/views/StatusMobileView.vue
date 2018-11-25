@@ -1,29 +1,39 @@
 <template>
   <div id="status-mobile-view">
+    <sui-dimmer :active="isLoading">
+      <sui-loader>Loading...</sui-loader>
+    </sui-dimmer>
     <StatusCard :name="name" :color="color" :statusText="statusText" :lastUpdateText="lastUpdateText" />
+    <OccupancyRate class="occupancy" :memberId="memberId" />
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue, Watch } from 'vue-property-decorator'
 import { firebaseDatabase } from '@/main'
-import StatusCard from '@/components/StatusCard/StatusCard.vue'
+import StatusCard from '@/components/StatusCard/StatusCard'
+import OccupancyRate from '@/components/OccupancyRate/OccupancyRate'
 
 @Component({
   components: {
     StatusCard,
+    OccupancyRate
   },
 })
 export default class StatusMobileView extends Vue {
 
   private memberRef!: firebase.database.Reference
+  private isLoading: boolean = false
+  private memberId: number = -1
   private name = ''
   private color = ''
   private statusText = ''
   private lastUpdateText = ''
 
   public async created(): Promise<void> {
+    this.isLoading = true
     const id: string = this.$route.params.id
+    this.memberId = +id
     const stateSnap = await firebaseDatabase.ref('status').once('value')
     this.memberRef = firebaseDatabase.ref(`members/${id}`)
     this.memberRef.on('value', (snap) => {
@@ -33,7 +43,11 @@ export default class StatusMobileView extends Vue {
       this.color = memStatus.color
       this.statusText = memStatus.name
       this.lastUpdateText = snap!.child('last_update_date').val() + ' ' + lastStatus.name + '⇒' + memStatus.name
+
+      // 最初の読み込み時以降はfalseになるだけなのでここで問題ないはず
+      this.isLoading = false
     });
+
   }
 
   public destroyed(): void {
@@ -45,6 +59,12 @@ export default class StatusMobileView extends Vue {
 <style lang="scss" scoped>
   #status-mobile-view {
     margin-top: 30px;
+    width: 95% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  .occupancy {
+    margin-top: 30px !important;
   }
 </style>
 
