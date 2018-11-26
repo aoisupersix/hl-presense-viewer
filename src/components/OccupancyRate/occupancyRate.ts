@@ -13,11 +13,11 @@ export default class OccupancyRate extends Vue {
   private percentAll: number = 0
 
   public get percentLessonLabel(): string {
-    return `合算在室率：${this.percentLesson}%`
+    return `授業時間（90x5分）の在室率：${this.percentLesson}%`
   }
 
   public get percentAllLabel(): string {
-    return `授業時間（90x5分）の在室率：${this.percentAll}%`
+    return `合算在室率：${this.percentAll}%`
   }
 
   public created(): void {
