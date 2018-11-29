@@ -3,7 +3,7 @@
     <sui-dimmer :active="isLoading">
       <sui-loader>Loading...</sui-loader>
     </sui-dimmer>
-    <StatusCard :name="name" :color="color" :statusText="statusText" :lastUpdateText="lastUpdateText" statusDetailText="工学部等付近にいます。" isShowingStatusDetail="true" />
+    <StatusCard :name="name" :color="color" :statusText="statusText" :lastUpdateText="lastUpdateText" :statusDetailText="statusDetail" :isShowingStatusDetail="isShowingStatusDetail" />
     <occupancy-rate class="margin-top" :memberId="memberId" />
     <time-lines class="margin-top" :memberId="memberId" />
   </div>
@@ -28,10 +28,32 @@ export default class StatusMobileView extends Vue {
   private memberRef!: firebase.database.Reference
   private isLoading: boolean = false
   private memberId: number = -1
+  private statusId: number = -1
   private name = ''
   private color = ''
   private statusText = ''
+  private geofenceStatusText = ''
   private lastUpdateText = ''
+
+  private get isShowingStatusDetail(): boolean {
+    if (this.statusId === 1 || this.statusId === 2) {
+      return true
+    }
+
+    return false
+  }
+
+  private get statusDetail(): string {
+    if (this.statusId === 1) {
+      // ジオフェンス状態から表示
+      return this.geofenceStatusText
+    } else if (this.statusId === 2) {
+      // 研究室
+      return '研究室内(3-22)にいます。'
+    }
+
+    return ''
+  }
 
   public async created(): Promise<void> {
     this.isLoading = true
@@ -42,9 +64,11 @@ export default class StatusMobileView extends Vue {
     this.memberRef.on('value', (snap) => {
       const memStatus = stateSnap.child(snap!.child('status').val()).val()
       const lastStatus = stateSnap.child(snap!.child('last_status').val()).val()
+      this.statusId = snap!.child('status').val()
       this.name = snap!.child('last_name').val() + ' ' + snap!.child('first_name').val()
       this.color = memStatus.color
       this.statusText = memStatus.name
+      this.geofenceStatusText = snap!.child('geofence_message').val()
       this.lastUpdateText = snap!.child('last_update_date').val() + ' ' + lastStatus.name + '⇒' + memStatus.name
 
       // 最初の読み込み時以降はfalseになるだけなのでここで問題ないはず
