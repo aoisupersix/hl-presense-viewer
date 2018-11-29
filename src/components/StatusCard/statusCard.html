@@ -5,6 +5,7 @@
       <sui-card-meta>の現在のステータス：</sui-card-meta>
       <sui-card-description>
         <h1 class="status">{{ statusText }}</h1>
+        <p class="status-detail" v-if="isShowingStatusDetail">{{ statusDetailText }}</p>
       </sui-card-description>
     </sui-card-content>
     <sui-card-content extra>

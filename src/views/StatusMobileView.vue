@@ -3,7 +3,7 @@
     <sui-dimmer :active="isLoading">
       <sui-loader>Loading...</sui-loader>
     </sui-dimmer>
-    <StatusCard :name="name" :color="color" :statusText="statusText" :lastUpdateText="lastUpdateText" />
+    <StatusCard :name="name" :color="color" :statusText="statusText" :lastUpdateText="lastUpdateText" statusDetailText="工学部等付近にいます。" isShowingStatusDetail="true" />
     <occupancy-rate class="margin-top" :memberId="memberId" />
     <time-lines class="margin-top" :memberId="memberId" />
   </div>
